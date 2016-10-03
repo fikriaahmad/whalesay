@@ -1,4 +1,6 @@
-FROM docker/whalesay:latest
+RUN apt-get -y -q install nginx
+RUN mkdir -p /var/www/html
+ADD nginx/global.conf /etc/nginx/conf.d/
+ADD nginx/nginx.conf /etc/nginx/nginx.conf
+EXPOSE 80
 
-RUN apt-get -y update && apt-get install -y fortunes
-CMD /usr/games/fortune -a | cowsay
